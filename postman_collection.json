@@ -1,0 +1,133 @@
+{
+  "info": {
+    "_postman_id": "api-eventos-collection",
+    "name": "API_Eventos - Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección Postman para probar todos los endpoints de la API de eventos"
+  },
+  "item": [
+    {
+      "name": "Eventos Deportivos",
+      "item": [
+        {
+          "name": "Crear Evento Deportivo",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Maraton Ciudad\",\n  \"descripcion\": \"Maraton anual\",\n  \"deporte\": \"atletismo\",\n  \"fecha\": \"2025-11-10T09:00:00Z\",\n  \"lugar\": { \"nombre\": \"Parque Central\", \"ciudad\": \"MiCiudad\" },\n  \"participantes\": [],\n  \"precio\": 10\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/eventos/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventos","crear"] }
+          }
+        },
+        {
+          "name": "Listar Eventos Deportivos",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/eventos/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventos","listar"] } }
+        },
+        {
+          "name": "Obtener Evento por ID",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/eventos/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventos",":id"] } }
+        },
+        {
+          "name": "Actualizar Evento",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"estado\": \"en_curso\" }" },
+            "url": { "raw": "http://localhost:3000/api/eventos/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventos",":id"] }
+          }
+        },
+        {
+          "name": "Eliminar Evento",
+          "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/eventos/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventos",":id"] } }
+        }
+      ]
+    },
+    {
+      "name": "Eventos Culturales",
+      "item": [
+        {
+          "name": "Crear Evento Cultural",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Festival de Teatro\",\n  \"descripcion\": \"Obras cortas\",\n  \"tipo\": \"teatro\",\n  \"fecha\": \"2025-12-01T19:00:00Z\",\n  \"lugar\": { \"nombre\": \"Teatro Principal\", \"ciudad\": \"MiCiudad\" },\n  \"participantes\": []\n}" },
+            "url": { "raw": "http://localhost:3000/api/eventoCultural/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural","crear"] }
+          }
+        },
+        { "name": "Listar Eventos Culturales", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/eventoCultural/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural","listar"] } } },
+        { "name": "Obtener Evento Cultural por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/eventoCultural/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural",":id"] } } },
+        { "name": "Actualizar Evento Cultural", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"estado\": \"finalizado\" }" }, "url": { "raw": "http://localhost:3000/api/eventoCultural/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural",":id"] } } },
+        { "name": "Eliminar Evento Cultural", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/eventoCultural/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural",":id"] } } },
+        { "name": "Agregar Participante a Evento Cultural", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"participanteId\": \"<participanteId>\" }" }, "url": { "raw": "http://localhost:3000/api/eventoCultural/:id/agregar-participante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural",":id","agregar-participante"] } } },
+        { "name": "Quitar Participante de Evento Cultural", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"participanteId\": \"<participanteId>\" }" }, "url": { "raw": "http://localhost:3000/api/eventoCultural/:id/quitar-participante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","eventoCultural",":id","quitar-participante"] } } }
+      ]
+    },
+    {
+      "name": "Participantes",
+      "item": [
+        { "name": "Crear Participante", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"nombre\": \"Ana\", \"apellido\": \"Perez\", \"nacimiento\": \"1990-05-20\", \"genero\": \"femenino\", \"eventosCulturales\": [] }" }, "url": { "raw": "http://localhost:3000/api/participante/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","participante","crear"] } } },
+        { "name": "Listar Participantes", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/participante/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","participante","listar"] } } },
+        { "name": "Obtener Participante por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/participante/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","participante",":id"] } } },
+        { "name": "Actualizar Participante", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"apellido\": \"Gomez\" }" }, "url": { "raw": "http://localhost:3000/api/participante/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","participante",":id"] } } },
+        { "name": "Eliminar Participante", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/participante/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","participante",":id"] } } }
+      ]
+    },
+    {
+      "name": "Equipos",
+      "item": [
+        { "name": "Crear Equipo", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"nombre\": \"Equipo A\", \"evento\": \"<eventoId>\" }" }, "url": { "raw": "http://localhost:3000/api/equipo/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo","crear"] } } },
+        { "name": "Listar Equipos", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/equipo/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo","listar"] } } },
+        { "name": "Obtener Equipo por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/equipo/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo",":id"] } } },
+        { "name": "Actualizar Equipo", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"categoria\": \"Profesional\" }" }, "url": { "raw": "http://localhost:3000/api/equipo/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo",":id"] } } },
+        { "name": "Eliminar Equipo", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/equipo/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo",":id"] } } },
+        { "name": "Agregar Participante a Equipo", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"participanteId\": \"<participanteId>\" }" }, "url": { "raw": "http://localhost:3000/api/equipo/:id/agregar-participante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo",":id","agregar-participante"] } } },
+        { "name": "Quitar Participante de Equipo", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"participanteId\": \"<participanteId>\" }" }, "url": { "raw": "http://localhost:3000/api/equipo/:id/quitar-participante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","equipo",":id","quitar-participante"] } } }
+      ]
+    },
+    {
+      "name": "Grupos Musicales",
+      "item": [
+        { "name": "Crear Grupo", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"nombre\": \"Los Rockeros\", \"genero\": \"rock\" }" }, "url": { "raw": "http://localhost:3000/api/grupo/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","grupo","crear"] } } },
+        { "name": "Listar Grupos", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/grupo/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","grupo","listar"] } } },
+        { "name": "Obtener Grupo por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/grupo/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","grupo",":id"] } } },
+        { "name": "Actualizar Grupo", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"pais\": \"ES\" }" }, "url": { "raw": "http://localhost:3000/api/grupo/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","grupo",":id"] } } },
+        { "name": "Eliminar Grupo", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/grupo/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","grupo",":id"] } } }
+      ]
+    },
+    {
+      "name": "Conciertos",
+      "item": [
+        { "name": "Crear Concierto", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"nombre\": \"Noche de Rock\", \"fecha\": \"2025-12-20T21:00:00Z\", \"gruposMusicales\": [] }" }, "url": { "raw": "http://localhost:3000/api/concierto/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","concierto","crear"] } } },
+        { "name": "Listar Conciertos", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/concierto/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","concierto","listar"] } } },
+        { "name": "Obtener Concierto por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/concierto/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","concierto",":id"] } } },
+        { "name": "Actualizar Concierto", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"estado\": \"cancelado\" }" }, "url": { "raw": "http://localhost:3000/api/concierto/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","concierto",":id"] } } },
+        { "name": "Eliminar Concierto", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/concierto/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","concierto",":id"] } } }
+      ]
+    },
+    {
+      "name": "Conferencias",
+      "item": [
+        { "name": "Crear Conferencia", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"nombre\": \"Tech Summit\", \"fecha\": \"2025-10-30T09:00:00Z\", \"ponentes\": [] }" }, "url": { "raw": "http://localhost:3000/api/conferencia/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","conferencia","crear"] } } },
+        { "name": "Listar Conferencias", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/conferencia/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","conferencia","listar"] } } },
+        { "name": "Obtener Conferencia por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/conferencia/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","conferencia",":id"] } } },
+        { "name": "Actualizar Conferencia", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"estado\": \"en_curso\" }" }, "url": { "raw": "http://localhost:3000/api/conferencia/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","conferencia",":id"] } } },
+        { "name": "Eliminar Conferencia", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/conferencia/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","conferencia",":id"] } } }
+      ]
+    },
+    {
+      "name": "Ponentes",
+      "item": [
+        { "name": "Crear Ponente", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"nombre\": \"Dr. Ruiz\", \"especialidad\": \"AI\" }" }, "url": { "raw": "http://localhost:3000/api/ponente/crear", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","ponente","crear"] } } },
+        { "name": "Listar Ponentes", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/ponente/listar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","ponente","listar"] } } },
+        { "name": "Obtener Ponente por ID", "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/ponente/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","ponente",":id"] } } },
+        { "name": "Actualizar Ponente", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"bio\": \"Nueva bio\" }" }, "url": { "raw": "http://localhost:3000/api/ponente/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","ponente",":id"] } } },
+        { "name": "Eliminar Ponente", "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/ponente/:id", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api","ponente",":id"] } } }
+      ]
+    }
+  ],
+  "event": []
+}
